@@ -25,7 +25,7 @@ const menuData = [
     "isNew": false,
     "allergens": ["Süt içerir"],
     "available": true,
-    "image": "images/hot_coffee.png"
+    "image": "images/mocha_kizil.png"
   },
   {
     "id": "espresso",
@@ -39,7 +39,7 @@ const menuData = [
     "isNew": false,
     "allergens": [],
     "available": true,
-    "image": "images/hot_coffee.png"
+    "image": "images/espresso.png"
   },
   {
     "id": "americano",
@@ -53,7 +53,7 @@ const menuData = [
     "isNew": false,
     "allergens": [],
     "available": true,
-    "image": "images/hot_coffee.png"
+    "image": "images/americano.png"
   },
   {
     "id": "cappuccino",
@@ -67,7 +67,7 @@ const menuData = [
     "isNew": false,
     "allergens": ["Süt içerir"],
     "available": true,
-    "image": "images/hot_coffee.png"
+    "image": "images/cappuccino.png"
   },
   {
     "id": "latte",
@@ -81,7 +81,7 @@ const menuData = [
     "isNew": false,
     "allergens": ["Süt içerir"],
     "available": true,
-    "image": "images/hot_coffee.png"
+    "image": "images/latte.png"
   },
   {
     "id": "mocha",
@@ -95,7 +95,7 @@ const menuData = [
     "isNew": false,
     "allergens": ["Süt içerir"],
     "available": true,
-    "image": "images/hot_coffee.png"
+    "image": "images/mocha.png"
   },
   {
     "id": "filtre-kahve",
@@ -123,7 +123,7 @@ const menuData = [
     "isNew": false,
     "allergens": [],
     "available": true,
-    "image": "images/filter_coffee.png"
+    "image": "images/v60.png"
   },
   {
     "id": "ice-americano",
@@ -137,7 +137,7 @@ const menuData = [
     "isNew": false,
     "allergens": [],
     "available": true,
-    "image": "images/iced_coffee.png"
+    "image": "images/ice_americano.png"
   },
   {
     "id": "ice-latte",
@@ -165,7 +165,7 @@ const menuData = [
     "isNew": false,
     "allergens": [],
     "available": true,
-    "image": "images/iced_coffee.png"
+    "image": "images/cold_brew.png"
   },
   {
     "id": "brownie",
@@ -193,7 +193,7 @@ const menuData = [
     "isNew": false,
     "allergens": ["Süt içerir", "Gluten içerebilir"],
     "available": true,
-    "image": "images/dessert.png"
+    "image": "images/cheesecake.png"
   },
   {
     "id": "kruvasan",
