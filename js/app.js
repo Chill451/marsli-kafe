@@ -53,10 +53,10 @@ function renderCategories() {
     const btn = document.createElement('button');
     const isActive = category === activeCategory;
     
-    btn.className = `whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
+    btn.className = `whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-md ${
       isActive 
-        ? 'bg-mars_orange text-background' 
-        : 'bg-surface text-sand_beige hover:bg-card border border-card/50'
+        ? 'bg-gradient-to-r from-mars_orange to-[#F09A5B] text-background shadow-[0_0_15px_rgba(200,107,60,0.4)] border border-transparent' 
+        : 'bg-white/5 text-sand_beige hover:bg-white/10 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]'
     }`;
     btn.textContent = category;
     
@@ -120,8 +120,17 @@ function renderMenu() {
       // Calculate delay based on index for staggered animation, max out at 5 so it doesn't take forever
       const animDelay = prefersReducedMotion ? 0 : Math.min(index * 0.05, 0.5);
       
-      card.className = `bg-surface border border-card rounded-2xl p-5 flex flex-col h-full menu-card-hover item-enter`;
+      card.className = `relative overflow-hidden bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col h-full menu-card-hover item-enter backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-300 group`;
       card.style.animationDelay = `${animDelay}s`;
+      
+      let glowColor = "rgba(255,255,255,0)";
+      if (item.tags.includes("Sıcak") || item.tags.includes("Önerilen")) {
+        glowColor = "rgba(200, 107, 60, 0.15)";
+      } else if (item.tags.includes("Soğuk")) {
+        glowColor = "rgba(131, 181, 209, 0.15)";
+      }
+      
+      const glowHtml = `<div class="absolute -top-10 -right-10 w-40 h-40 rounded-full mix-blend-screen filter blur-[40px] pointer-events-none transition-all duration-500 group-hover:scale-125 group-hover:opacity-80" style="background-color: ${glowColor};"></div>`;
       
       // Popular badge HTML
       const popularBadge = item.isPopular 
@@ -155,7 +164,8 @@ function renderMenu() {
         : '';
 
       card.innerHTML = `
-        <div class="flex-grow">
+        ${glowHtml}
+        <div class="flex-grow relative z-10">
           ${popularBadge}
           <div class="flex justify-between items-start gap-2 mb-2">
             <h3 class="text-base font-heading font-semibold text-cream_text">${item.name}</h3>
@@ -163,10 +173,10 @@ function renderMenu() {
           </div>
           <p class="text-sm text-muted_text mb-4 leading-relaxed">${item.description}</p>
         </div>
-        <div class="flex flex-wrap gap-1.5 mt-auto">
+        <div class="flex flex-wrap gap-1.5 mt-auto relative z-10">
           ${tagsHtml}
         </div>
-        ${allergensHtml}
+        ${allergensHtml ? `<div class="relative z-10">${allergensHtml}</div>` : ''}
       `;
       
       menuGrid.appendChild(card);
