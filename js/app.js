@@ -211,6 +211,36 @@ backToTopBtn.addEventListener('click', () => {
   });
 });
 
+// Parallax Background Effect
+const parallaxBg = document.getElementById('parallax-bg');
+
+function handleParallax(e) {
+  if (prefersReducedMotion || !parallaxBg) return;
+  
+  let clientX, clientY;
+  
+  if (e.type === 'touchmove') {
+    clientX = e.touches[0].clientX;
+    clientY = e.touches[0].clientY;
+  } else {
+    clientX = e.clientX;
+    clientY = e.clientY;
+  }
+  
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  
+  // Inverse movement for depth effect (moves opposite to cursor)
+  // Max 40px translation in any direction
+  const moveX = ((clientX / windowWidth) - 0.5) * -80;
+  const moveY = ((clientY / windowHeight) - 0.5) * -80;
+  
+  parallaxBg.style.transform = `translate(${moveX}px, ${moveY}px)`;
+}
+
+window.addEventListener('mousemove', handleParallax);
+window.addEventListener('touchmove', handleParallax, { passive: true });
+
 // Init
 function init() {
   createStars();
