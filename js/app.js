@@ -179,6 +179,29 @@ function renderMenu() {
         ${allergensHtml ? `<div class="relative z-10">${allergensHtml}</div>` : ''}
       `;
       
+      // 3D Tilt Effect on Hover
+      card.addEventListener('mousemove', (e) => {
+        if (prefersReducedMotion) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate tilt angles (max 8 degrees)
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale3d(1.02, 1.02, 1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        if (prefersReducedMotion) return;
+        // Reset transform to allow CSS hover effects to take over again
+        card.style.transform = '';
+      });
+      
       menuGrid.appendChild(card);
     });
     
