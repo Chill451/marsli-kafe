@@ -139,6 +139,13 @@ function renderMenu() {
            </span>`
         : '';
         
+      // Image HTML
+      const imageHtml = item.image 
+        ? `<div class="w-full h-48 mb-4 rounded-xl overflow-hidden shadow-lg border border-white/5">
+             <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+           </div>`
+        : '';
+        
       // Tags HTML
       const tagsHtml = item.tags.map(tag => {
         let bgColor = "bg-card";
@@ -166,6 +173,7 @@ function renderMenu() {
       card.innerHTML = `
         ${glowHtml}
         <div class="flex-grow relative z-10">
+          ${imageHtml}
           ${popularBadge}
           <div class="flex justify-between items-start gap-2 mb-2">
             <h3 class="text-base font-heading font-semibold text-cream_text">${item.name}</h3>

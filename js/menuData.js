@@ -10,7 +10,8 @@ const menuData = [
     "isPopular": true,
     "isNew": false,
     "allergens": ["Süt içerir"],
-    "available": true
+    "available": true,
+    "image": "images/hot_coffee.png"
   },
   {
     "id": "kizil-gezegen-mocha",
@@ -23,7 +24,8 @@ const menuData = [
     "isPopular": true,
     "isNew": false,
     "allergens": ["Süt içerir"],
-    "available": true
+    "available": true,
+    "image": "images/hot_coffee.png"
   },
   {
     "id": "espresso",
@@ -36,7 +38,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": [],
-    "available": true
+    "available": true,
+    "image": "images/hot_coffee.png"
   },
   {
     "id": "americano",
@@ -49,7 +52,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": [],
-    "available": true
+    "available": true,
+    "image": "images/hot_coffee.png"
   },
   {
     "id": "cappuccino",
@@ -62,7 +66,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": ["Süt içerir"],
-    "available": true
+    "available": true,
+    "image": "images/hot_coffee.png"
   },
   {
     "id": "latte",
@@ -75,7 +80,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": ["Süt içerir"],
-    "available": true
+    "available": true,
+    "image": "images/hot_coffee.png"
   },
   {
     "id": "mocha",
@@ -88,7 +94,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": ["Süt içerir"],
-    "available": true
+    "available": true,
+    "image": "images/hot_coffee.png"
   },
   {
     "id": "filtre-kahve",
@@ -101,7 +108,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": [],
-    "available": true
+    "available": true,
+    "image": "images/filter_coffee.png"
   },
   {
     "id": "v60",
@@ -114,7 +122,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": [],
-    "available": true
+    "available": true,
+    "image": "images/filter_coffee.png"
   },
   {
     "id": "ice-americano",
@@ -127,7 +136,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": [],
-    "available": true
+    "available": true,
+    "image": "images/iced_coffee.png"
   },
   {
     "id": "ice-latte",
@@ -140,7 +150,8 @@ const menuData = [
     "isPopular": true,
     "isNew": false,
     "allergens": ["Süt içerir"],
-    "available": true
+    "available": true,
+    "image": "images/iced_coffee.png"
   },
   {
     "id": "cold-brew",
@@ -153,7 +164,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": [],
-    "available": true
+    "available": true,
+    "image": "images/iced_coffee.png"
   },
   {
     "id": "brownie",
@@ -166,7 +178,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": ["Gluten içerebilir"],
-    "available": true
+    "available": true,
+    "image": "images/dessert.png"
   },
   {
     "id": "cheesecake",
@@ -179,7 +192,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": ["Süt içerir", "Gluten içerebilir"],
-    "available": true
+    "available": true,
+    "image": "images/dessert.png"
   },
   {
     "id": "kruvasan",
@@ -192,7 +206,8 @@ const menuData = [
     "isPopular": false,
     "isNew": false,
     "allergens": ["Gluten içerir"],
-    "available": true
+    "available": true,
+    "image": "images/croissant.png"
   }
 ];
 
