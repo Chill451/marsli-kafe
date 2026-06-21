@@ -181,12 +181,12 @@ function renderMenu() {
       // 3D Tilt Effect on Hover
       card.addEventListener('mouseenter', () => {
         if (prefersReducedMotion) return;
-        // Remove transition duration during mousemove so it doesn't lag/freeze
-        card.style.transitionDuration = '0ms';
+        card.style.transition = 'none'; // Disable transition for instant mouse tracking
       });
 
       card.addEventListener('mousemove', (e) => {
         if (prefersReducedMotion) return;
+        
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -194,20 +194,26 @@ function renderMenu() {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        // Calculate tilt angles (max 10 degrees)
-        const rotateX = ((y - centerY) / centerY) * -10;
-        const rotateY = ((x - centerX) / centerX) * 10;
+        // Calculate tilt angles (max 12 degrees)
+        const rotateX = ((y - centerY) / centerY) * -12;
+        const rotateY = ((x - centerX) / centerX) * 12;
         
-        // Apply transform instantly (transition is 0ms)
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02) translateY(-4px)`;
+        // Apply transform instantly
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
       });
       
       card.addEventListener('mouseleave', () => {
         if (prefersReducedMotion) return;
-        // Restore transition duration for a smooth return
-        card.style.transitionDuration = '300ms';
-        // Reset transform to allow CSS hover effects to take over again
-        card.style.transform = '';
+        // Restore transition for smooth return
+        card.style.transition = 'transform 0.5s ease-out';
+        // Reset transform
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        
+        // Remove the inline transition style after it finishes so CSS hover works again
+        setTimeout(() => {
+          card.style.transition = '';
+          card.style.transform = '';
+        }, 500);
       });
       
       menuGrid.appendChild(card);
