@@ -2,80 +2,50 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marslı Kafe - QR Menü</title>
+  <meta name="description" content="Marslı Kafe'nin dijital QR menüsü. Kahve, tatlı ve atıştırmalıklarımızı inceleyin.">
   
   <!-- Preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Custom Styles -->
+  <!-- Compiled Local Styles (Tailwind + Custom) -->
   <link rel="stylesheet" href="css/styles.css">
-
-  <!-- Tailwind CSS (via CDN for local execution) -->
-  <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Tailwind Configuration -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            background: '#0B0A0E',     // Deep space black
-            surface: '#120F18',        // Slightly lighter dark for cards
-            card: '#1A1622',           // Card backgrounds
-            mars_orange: '#C86B3C',    // Primary rusty orange
-            dusty_red: '#9F4A3A',      // Darker red for depth
-            sand_beige: '#E8CFA8',     // For secondary text/accents
-            cream_text: '#F5E6D3',     // Primary text color
-            muted_text: '#A69B97',     // Muted text
-            accent: '#F09A5B',         // Bright accent orange
-          },
-          fontFamily: {
-            sans: ['Outfit', 'sans-serif'],
-            heading: ['Space Grotesk', 'sans-serif'],
-          },
-          animation: {
-            'fade-in': 'fadeIn 0.5s ease-out forwards',
-            'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
-            'spin-slow': 'spin 30s linear infinite',
-          },
-          keyframes: {
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-            fadeInUp: {
-              '0%': { opacity: '0', transform: 'translateY(15px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            }
-          }
-        }
-      }
-    }
-  </script>
-  
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
-    }
-  </style>
+  <!-- Local Lucide Icons -->
+  <script src="js/lucide.min.js" defer></script>
 </head>
 <body class="bg-background text-cream_text font-sans antialiased min-h-screen relative overflow-x-hidden selection:bg-mars_orange selection:text-background">
   
+  <!-- No JS Fallback -->
+  <noscript>
+    <div class="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center p-6 text-center">
+      <h1 class="text-3xl text-mars_orange font-heading font-bold mb-4">JavaScript Gerekli</h1>
+      <p class="text-cream_text max-w-md">Menüyü ve interaktif özellikleri görüntüleyebilmek için lütfen tarayıcınızda JavaScript'i etkinleştirin.</p>
+    </div>
+  </noscript>
+
   <!-- Background Elements -->
-  <div id="parallax-bg" class="fixed -inset-[100px] z-0 pointer-events-none overflow-hidden bg-background transition-transform duration-700 ease-out">
-    <!-- Space Shuttle Background Image -->
-    <div class="absolute inset-0 bg-[url('images/shuttle_bg.jpg')] bg-cover bg-center bg-no-repeat opacity-[0.15] mix-blend-lighten"></div>
+  <div id="parallax-bg" class="fixed -inset-[100px] z-0 pointer-events-none overflow-hidden bg-background transition-transform duration-700 ease-out will-change-transform">
     
+    <!-- Abstract Mars Surface Motif -->
+    <svg class="absolute bottom-0 right-0 w-[80vw] h-[80vw] max-w-[800px] opacity-[0.03] text-mars_orange" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,100 C20,80 40,90 60,70 C80,50 90,60 100,40 L100,100 Z" />
+      <path d="M20,100 C30,85 50,85 70,75 C85,65 95,50 100,30 L100,100 Z" opacity="0.5"/>
+      <circle cx="80" cy="20" r="10" />
+    </svg>
+
+    <!-- Coffee Cup Motif -->
+    <svg class="absolute top-1/4 left-10 w-32 h-32 opacity-[0.02] text-sand_beige transform -rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+      <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+      <line x1="6" y1="2" x2="6" y2="4"></line>
+      <line x1="10" y1="2" x2="10" y2="4"></line>
+      <line x1="14" y1="2" x2="14" y2="4"></line>
+    </svg>
+
     <!-- Atmospheric Orbs -->
     <div class="absolute -top-40 -left-40 w-96 h-96 bg-mars_orange/15 rounded-full mix-blend-screen filter blur-[100px] animate-orb-1"></div>
     <div class="absolute top-1/2 -right-20 w-80 h-80 bg-dusty_red/15 rounded-full mix-blend-screen filter blur-[100px] animate-orb-2"></div>
@@ -127,12 +97,12 @@
     </header>
 
     <!-- Search & Navigation -->
-    <div class="sticky top-4 z-50 mb-8 mx-auto w-full max-w-3xl animate-fade-in-up" style="animation-delay: 0.3s;">
-      <div class="bg-surface/40 backdrop-blur-2xl border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] rounded-3xl p-3 flex flex-col gap-3">
+    <div id="sticky-header" class="sticky top-4 z-50 mb-8 mx-auto w-full max-w-3xl animate-fade-in-up transition-all duration-500 ease-in-out" style="animation-delay: 0.3s;">
+      <div id="sticky-island" class="bg-surface/40 backdrop-blur-2xl border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] rounded-3xl p-3 flex flex-col gap-3 transition-all duration-500 ease-in-out">
         <!-- Search -->
-        <div class="relative w-full">
+        <div id="search-container" class="relative w-full transition-all duration-500 ease-in-out origin-top">
           <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <i data-lucide="search" class="w-4 h-4 text-muted_text"></i>
+            <i data-lucide="search" class="w-4 h-4 text-muted_text transition-colors duration-300"></i>
           </div>
           <input 
             type="text" 
@@ -143,14 +113,28 @@
         </div>
 
         <!-- Categories -->
-        <nav id="category-nav" class="flex overflow-x-auto hide-scrollbar gap-2 px-1 pb-1">
-          <!-- Rendered by JS -->
-        </nav>
+        <div class="flex items-center">
+          <button id="compact-search-btn" class="hidden shrink-0 mr-2 p-2 rounded-full bg-black/40 border border-white/5 text-muted_text hover:text-mars_orange hover:bg-black/60 transition-colors" aria-label="Arama">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+          <nav id="category-nav" class="flex overflow-x-auto hide-scrollbar gap-2 px-1 pb-1 w-full scroll-smooth">
+            <!-- Rendered by JS -->
+          </nav>
+        </div>
       </div>
     </div>
 
     <!-- Menu Content -->
-    <main class="flex-grow pb-12">
+    <main class="flex-grow pb-12 relative min-h-[50vh]">
+      
+      <!-- Error State (If menuData fails) -->
+      <div id="error-state" class="hidden flex-col items-center justify-center py-16 text-center animate-fade-in-up">
+        <i data-lucide="alert-triangle" class="w-12 h-12 text-dusty_red mb-4 opacity-70"></i>
+        <h3 class="text-lg font-heading font-semibold text-cream_text mb-2">Bağlantı Hatası</h3>
+        <p class="text-muted_text text-sm">Menü verileri yüklenemedi. Lütfen sayfayı yenileyin veya kasadan destek alın.</p>
+        <button onclick="window.location.reload()" class="mt-6 px-6 py-2 bg-mars_orange text-background rounded-full font-medium hover:bg-opacity-90 transition-opacity">Tekrar Dene</button>
+      </div>
+
       <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Rendered by JS -->
       </div>
@@ -180,7 +164,7 @@
         </div>
         <div class="flex items-start gap-3">
           <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 text-mars_orange shrink-0"></i>
-          <span>Adres bilgisi buraya eklenecek, Kadıköy / İstanbul</span>
+          <span>Moda Caddesi No:42, Kadıköy / İstanbul</span>
         </div>
         <div class="flex items-start gap-3">
           <i data-lucide="instagram" class="w-4 h-4 mt-0.5 text-mars_orange shrink-0"></i>
@@ -200,13 +184,13 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-6 right-6 p-3 bg-surface/80 backdrop-blur-md border border-card text-sand_beige rounded-full shadow-lg shadow-black/50 opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:bg-card focus:outline-none focus:ring-2 focus:ring-mars_orange z-50">
+    <button id="back-to-top" aria-label="Yukarı Çık" class="fixed bottom-6 right-6 p-3 bg-surface/80 backdrop-blur-md border border-card text-sand_beige rounded-full shadow-lg shadow-black/50 opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:bg-card focus:outline-none focus:ring-2 focus:ring-mars_orange z-50">
       <i data-lucide="arrow-up" class="w-5 h-5"></i>
     </button>
 
   </div>
 
-  <script src="js/menuData.js?v=4"></script>
-  <script src="js/app.js?v=4"></script>
+  <script src="js/menuData.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
