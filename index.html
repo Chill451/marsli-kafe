@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marslı Kafe - Menü</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: '#120F18',
+            surface: '#1D1824',
+            card: '#241C2D',
+            mars_orange: '#C86B3C',
+            dusty_red: '#9F4A3A',
+            sand_beige: '#E8CFA8',
+            cream_text: '#F6EBDD',
+            muted_text: '#B9AFA6',
+            accent: '#F09A5B'
+          },
+          fontFamily: {
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+            'spin-slow': 'spin 20s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-15px)' },
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS for animations and tweaks not covered by basic Tailwind -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-background text-cream_text font-body antialiased min-h-screen relative overflow-x-hidden selection:bg-mars_orange selection:text-background">
+  
+  <!-- Background Elements -->
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-30">
+    <!-- Subtle grain/noise -->
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.15%22/%3E%3C/svg%3E')]"></div>
+    
+    <!-- Orbit lines -->
+    <svg class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] opacity-10 animate-spin-slow" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="400" cy="400" r="300" stroke="#E8CFA8" stroke-width="1" stroke-dasharray="4 8"/>
+      <circle cx="400" cy="400" r="200" stroke="#C86B3C" stroke-width="0.5"/>
+    </svg>
+
+    <!-- Twinkling stars container -->
+    <div id="stars-container" class="absolute inset-0"></div>
+  </div>
+
+  <div class="relative z-10 flex flex-col min-h-screen max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Announcement Bar -->
+    <div class="py-2 mt-4 text-center text-xs font-medium text-sand_beige bg-surface/50 backdrop-blur-sm rounded-full border border-card/50 mx-auto px-6 w-max animate-fade-in-up" style="animation-delay: 0.1s;">
+      <span class="flex items-center gap-2">
+        <i data-lucide="sparkles" class="w-3 h-3"></i>
+        Bugünün çekirdeği: Etiyopya
+      </span>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="py-12 flex flex-col items-center text-center animate-fade-in-up" style="animation-delay: 0.2s;">
+      <div class="relative mb-6 animate-float">
+        <!-- Mars Planet SVG Illustration -->
+        <svg class="w-24 h-24 drop-shadow-[0_0_15px_rgba(200,107,60,0.3)]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="40" fill="url(#mars-grad)"/>
+          <path d="M25 40C35 30 55 35 60 25C65 15 80 30 75 45C70 60 85 70 70 80C55 90 35 75 25 80C15 85 10 60 20 50C30 40 15 50 25 40Z" fill="#9F4A3A" opacity="0.6"/>
+          <path d="M40 70C45 65 55 68 60 60C65 52 75 60 70 68C65 76 50 78 40 70Z" fill="#120F18" opacity="0.2"/>
+          <defs>
+            <radialGradient id="mars-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(35 35) scale(60)">
+              <stop stop-color="#F09A5B"/>
+              <stop offset="0.6" stop-color="#C86B3C"/>
+              <stop offset="1" stop-color="#9F4A3A"/>
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-heading font-bold text-cream_text tracking-tight mb-2">Marslı Kafe</h1>
+      <p class="text-lg text-mars_orange font-medium mb-2">Kahveni al, yörüngeye geç.</p>
+      <p class="text-sm text-muted_text max-w-sm">Mars esintili, sakin ve modern bir kahve deneyimi.</p>
+    </header>
+
+    <!-- Search & Navigation -->
+    <div class="sticky top-0 z-50 pt-4 pb-2 bg-background/80 backdrop-blur-md mb-6 animate-fade-in-up" style="animation-delay: 0.3s;">
+      
+      <!-- Search -->
+      <div class="relative max-w-md mx-auto mb-4">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <i data-lucide="search" class="w-4 h-4 text-muted_text"></i>
+        </div>
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Kahve, tatlı veya kategori ara..." 
+          class="block w-full pl-10 pr-3 py-2.5 bg-surface border border-card rounded-2xl text-sm placeholder-muted_text focus:outline-none focus:ring-1 focus:ring-mars_orange focus:border-mars_orange transition-all duration-300"
+        >
+      </div>
+
+      <!-- Categories -->
+      <nav id="category-nav" class="flex overflow-x-auto hide-scrollbar gap-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center">
+        <!-- Rendered by JS -->
+      </nav>
+    </div>
+
+    <!-- Menu Content -->
+    <main class="flex-grow pb-12">
+      <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered by JS -->
+      </div>
+      
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden flex-col items-center justify-center py-16 text-center animate-fade-in-up">
+        <i data-lucide="telescope" class="w-12 h-12 text-mars_orange mb-4 opacity-70"></i>
+        <h3 class="text-lg font-heading font-semibold text-cream_text mb-2">Bu yörüngede ürün bulunamadı.</h3>
+        <p class="text-muted_text text-sm">Farklı bir arama yapmayı veya filtreyi temizlemeyi deneyin.</p>
+      </div>
+    </main>
+
+    <!-- Info Section -->
+    <section class="mb-12 bg-surface/50 rounded-3xl p-6 border border-card/30 animate-fade-in-up" style="animation-delay: 0.4s;">
+      <h2 class="text-lg font-heading font-semibold text-sand_beige mb-4 flex items-center gap-2">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        İstasyon Bilgileri
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-muted_text">
+        <div class="flex items-start gap-3">
+          <i data-lucide="clock" class="w-4 h-4 mt-0.5 text-mars_orange shrink-0"></i>
+          <span>Her gün 09:00 - 23:00</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <i data-lucide="wifi" class="w-4 h-4 mt-0.5 text-mars_orange shrink-0"></i>
+          <span>Wi-Fi: <strong class="text-cream_text font-medium">MarsliCafe</strong></span>
+        </div>
+        <div class="flex items-start gap-3">
+          <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 text-mars_orange shrink-0"></i>
+          <span>Adres bilgisi buraya eklenecek, Kadıköy / İstanbul</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <i data-lucide="instagram" class="w-4 h-4 mt-0.5 text-mars_orange shrink-0"></i>
+          <a href="#" class="hover:text-mars_orange transition-colors">@marslikafe</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-xs text-muted_text/60 border-t border-card/30">
+      <p>Marslı Kafe &mdash; Dünya'dan kısa bir mola.</p>
+      <div class="mt-4 flex justify-center gap-1">
+        <span class="w-1 h-1 rounded-full bg-sand_beige/30"></span>
+        <span class="w-1 h-1 rounded-full bg-sand_beige/50"></span>
+        <span class="w-1 h-1 rounded-full bg-mars_orange"></span>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 p-3 bg-surface/80 backdrop-blur-md border border-card text-sand_beige rounded-full shadow-lg shadow-black/50 opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:bg-card focus:outline-none focus:ring-2 focus:ring-mars_orange z-50">
+      <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+  </div>
+
+  <script src="js/menuData.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
